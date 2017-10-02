@@ -822,6 +822,8 @@ public class MyViewManager {
     }
 
     public void CmdDeal(CmdSerialInfo cmdSerialInfo){
+        int data1,data2;
+
         switch (cmdSerialInfo.getHeader()){
             case ProtocolDeal.CHANGE_PIC_HEAD:
                 if (mVideoView != null){
@@ -832,24 +834,49 @@ public class MyViewManager {
                     mVideoView.setVisibility(View.INVISIBLE);
                 }
                 mPicNum = cmdSerialInfo.getData2();
+                mFqWaterInfo.setVal_pic_num(mPicNum);//write settings
                 ChangePic(cmdSerialInfo.getData2());
                 break;
             case ProtocolDeal.CHANGE_FLOW_HEAD:
+                data1 = cmdSerialInfo.getData1();
+                data2 = cmdSerialInfo.getData2();
+                mFqWaterInfo.setVal_flow_data1(data1);//write settings
+                mFqWaterInfo.setVal_flow_data1(data2);//write settings
 
                 break;
             case ProtocolDeal.CHANGE_FILTER1_HEAD:
+                data1 = cmdSerialInfo.getData1();
+                data2 = cmdSerialInfo.getData2();
+                mFqWaterInfo.setVal_filter1_data1(data1);//write settings
+                mFqWaterInfo.setVal_filter2_data1(data2);//write settings
 
                 break;
             case ProtocolDeal.CHANGE_FILTER2_HEAD:
+                data1 = cmdSerialInfo.getData1();
+                data2 = cmdSerialInfo.getData2();
+                mFqWaterInfo.setVal_filter2_data1(data1);//write settings
+                mFqWaterInfo.setVal_filter2_data2(data2);//write settings
 
                 break;
             case ProtocolDeal.CHANGE_FILTER3_HEAD:
+                data1 = cmdSerialInfo.getData1();
+                data2 = cmdSerialInfo.getData2();
+                mFqWaterInfo.setVal_filter3_data1(data1);//write settings
+                mFqWaterInfo.setVal_filter3_data2(data2);//write settings
 
                 break;
             case ProtocolDeal.CHANGE_PH_HEAD:
+                data1 = cmdSerialInfo.getData1();
+                data2 = cmdSerialInfo.getData2();
+                mFqWaterInfo.setVal_ph_data1(data1);//write settings
+                mFqWaterInfo.setVal_ph_data2(data2);//write settings
 
                 break;
             case ProtocolDeal.CHANGE_ORP_HEAD:
+                data1 = cmdSerialInfo.getData1();
+                data2 = cmdSerialInfo.getData2();
+                mFqWaterInfo.setVal_orp_data1(data1);//write settings
+                mFqWaterInfo.setVal_orp_data2(data2);//write settings
 
                 break;
             case ProtocolDeal.CHANGE_PLAYER_HEAD:
