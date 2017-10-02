@@ -1,0 +1,1253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainAtyLayout"
+    android:layout_width="800px"
+    android:layout_height="480px"
+    android:keepScreenOn="true"
+    android:orientation="vertical"
+    android:background="@drawable/yellowpic"
+    tools:context="com.example.l.fqwarter.MainActivity">
+
+    <com.example.l.fqwarter.myutils.FullScreenVideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--background layout-->
+    <RelativeLayout
+        android:id="@+id/layoutBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/common1ImgBlueBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/w_blue_background" />
+
+        <ImageView
+            android:id="@+id/common1ImgWaterAnim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/an00000" />
+
+<!--
+
+        <ImageView
+            android:id="@+id/common1SettingImgBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/w_setting_common_background" />
+
+-->
+
+    </RelativeLayout>
+
+    <!--All common use(work and setting) layout=============-->
+    <RelativeLayout
+        android:id="@+id/layoutCommonAll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--common 1 use-->
+        <TextView
+            android:id="@+id/common1TxtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13px"
+            android:text="@string/common1_time"
+            android:textColor="#ffffff"
+            android:textSize="20px" />
+        <ImageView
+            android:id="@+id/common1ImgWifiStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="659px"
+            android:layout_marginTop="7px"
+            android:src="@drawable/w_wifi_status"/>
+        <ImageView
+            android:id="@+id/common1ImgVolStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="725px"
+            android:layout_marginTop="7px"
+            android:src="@drawable/w_vol_status"/>
+        <ImageView
+            android:id="@+id/common1ImgMute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="730px"
+            android:layout_marginTop="8px"
+            android:src="@drawable/w_setting_2_vol_mute"/>
+        <ImageView
+            android:id="@+id/common1ImgSplit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42px"
+            android:src="@drawable/w_split"/>
+        <ImageView
+            android:id="@+id/common1ImgLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="33px"
+            android:layout_marginTop="71px"
+            android:src="@drawable/w_logo"/>
+
+    </RelativeLayout>
+
+    <!--work mode common use layout=============-->
+    <RelativeLayout
+        android:id="@+id/layoutWorkHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--common 1 use-->
+        <ImageView
+            android:id="@+id/common1ImgWaterSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="688px"
+            android:layout_marginBottom="343px"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/w_water_speed"/>
+        <ImageView
+            android:id="@+id/common1ImgWaterBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="26px"
+            android:layout_marginTop="183px"
+            android:src="@drawable/w_water_background"/>
+        <ImageView
+            android:id="@+id/common1ImgWaterRoll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginBottom="96px"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/w_water_roll"/>
+        <ImageView
+            android:id="@+id/common1ImgWaterMan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="581px"
+            android:layout_marginBottom="66px"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/w_water_man"/>
+
+        <!--common 2 use=================-->
+        <TextView
+            android:id="@+id/common2TxtPH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="301px"
+            android:layout_marginTop="146px"
+            android:text="@string/common2_ph"
+            android:textColor="#ffffff"
+            android:textSize="24px" />
+        <TextView
+            android:id="@+id/common2TxtWaterSpeedTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="684px"
+            android:layout_marginTop="146px"
+            android:text="@string/common2_water_speed_title"
+            android:textColor="#ffffff"
+            android:textSize="24px" />
+        <TextView
+            android:id="@+id/common2TxtORP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="281px"
+            android:layout_marginTop="183px"
+            android:text="@string/common2_orp"
+            android:textColor="#ffffff"
+            android:textSize="24px" />
+        <TextView
+            android:id="@+id/common2TxtAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="509px"
+            android:layout_marginTop="183px"
+            android:text="@string/common2_age"
+            android:textColor="#ffffff"
+            android:textSize="24px" />
+        <TextView
+            android:id="@+id/common2TxtWaterSpeedVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="639px"
+            android:layout_marginTop="183px"
+            android:text="@string/common2_water_speed_val"
+            android:textColor="#ffffff"
+            android:textSize="24px" />
+
+
+        <!--common 3 use=================-->
+        <TextView
+            android:id="@+id/common3TxtAge1Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="481px"
+            android:layout_marginTop="93px"
+            android:text="@string/common3_age1_title"
+            android:textColor="#ffffff"
+            android:textSize="12px" />
+        <TextView
+            android:id="@+id/common3TxtAge2Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="481px"
+            android:layout_marginTop="125px"
+            android:text="@string/common3_age2_title"
+            android:textColor="#ffffff"
+            android:textSize="12px" />
+        <TextView
+            android:id="@+id/common3TxtAge3Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="481px"
+            android:layout_marginTop="156px"
+            android:text="@string/common3_age3_title"
+            android:textColor="#ffffff"
+            android:textSize="12px" />
+        <ImageView
+            android:id="@+id/common3ImgAge1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="491px"
+            android:layout_marginTop="93px"
+            android:src="@drawable/w_common3_filter_little"/>
+        <ImageView
+            android:id="@+id/common3ImgAge2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="491px"
+            android:layout_marginTop="125px"
+            android:src="@drawable/w_common3_filter_lot"/>
+        <ImageView
+            android:id="@+id/common3ImgAge3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="491px"
+            android:layout_marginTop="156px"
+            android:src="@drawable/w_common3_filter_full"/>
+        <TextView
+            android:id="@+id/common3TxtAge1Val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="174px"
+            android:layout_marginTop="93px"
+            android:layout_alignParentRight="true"
+            android:text="@string/common3_age1_val"
+            android:textColor="#ffffff"
+            android:textSize="18px" />
+        <TextView
+            android:id="@+id/common3TxtAge2Val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="174px"
+            android:layout_marginTop="125px"
+            android:layout_alignParentRight="true"
+            android:text="@string/common3_age2_val"
+            android:textColor="#ffffff"
+            android:textSize="18px" />
+        <TextView
+            android:id="@+id/common3TxtAge3Val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="174px"
+            android:layout_marginTop="156px"
+            android:layout_alignParentRight="true"
+            android:text="@string/common3_age3_val"
+            android:textColor="#ffffff"
+            android:textSize="18px" />
+
+        <!--outside water layout-->
+        <RelativeLayout
+            android:id="@+id/layoutOutsideWater"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/outsideWaterTxtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100px"
+                android:layout_marginTop="144px"
+                android:text="@string/outside_water_title"
+                android:textColor="#ffffff"
+                android:textSize="30px"
+                android:textStyle="bold"/>
+            <ImageView
+                android:id="@+id/outsideWaterImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="99px"
+                android:layout_marginTop="238px"
+                android:src="@drawable/w_outside_water_main"/>
+            <ImageView
+                android:id="@+id/outsideWaterImgBeauty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="333px"
+                android:layout_marginTop="307px"
+                android:src="@drawable/w_outside_water_beauty"/>
+            <ImageView
+                android:id="@+id/outsideWaterImgWashCup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="452px"
+                android:layout_marginTop="337px"
+                android:src="@drawable/w_outside_water_wash_cup"/>
+            <TextView
+                android:id="@+id/outsideWaterTxtBeauty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="339px"
+                android:layout_marginTop="376px"
+                android:text="@string/outside_water_title"
+                android:textColor="#fd7c9a"
+                android:textSize="24px"/>
+            <TextView
+                android:id="@+id/outsideWaterTxtWashCup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="430px"
+                android:layout_marginTop="376px"
+                android:text="@string/outside_water_title"
+                android:textColor="#0cc9fb"
+                android:textSize="24px"/>
+        </RelativeLayout>
+
+
+        <!--reduce water layout-->
+        <RelativeLayout
+            android:id="@+id/layoutReduceWater"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/reduceWaterTxtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100px"
+                android:layout_marginTop="144px"
+                android:text="@string/reduce_water_title"
+                android:textColor="#ffffff"
+                android:textSize="30px"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/reduceWaterImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="105px"
+                android:layout_marginTop="233px"
+                android:src="@drawable/w_reduce_water_main" />
+
+            <!--strong-->
+            <RelativeLayout
+                android:id="@+id/layoutReduceWaterStrong"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/reduceWaterStrongImgCookRice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="288px"
+                    android:layout_marginTop="320px"
+                    android:src="@drawable/w_reduce_water_strong_cook_rice" />
+                <ImageView
+                    android:id="@+id/reduceWaterStrongImgCookSoup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="354px"
+                    android:layout_marginTop="320px"
+                    android:src="@drawable/w_reduce_water_strong_cook_soup" />
+                <ImageView
+                    android:id="@+id/reduceWaterStrongImgCooking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="417px"
+                    android:layout_marginTop="327px"
+                    android:src="@drawable/w_reduce_water_strong_cooking" />
+                <ImageView
+                    android:id="@+id/reduceWaterStrongImgWashFruit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="521px"
+                    android:layout_marginTop="323px"
+                    android:src="@drawable/w_reduce_water_strong_wash_fruit" />
+                <TextView
+                    android:id="@+id/reduceWaterStrongTxtCookRice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="283px"
+                    android:layout_marginTop="376px"
+                    android:text="@string/reduce_water_strong_cook_rice"
+                    android:textColor="#000000"
+                    android:textSize="24px" />
+                <TextView
+                    android:id="@+id/reduceWaterStrongTxtCookSoup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="350px"
+                    android:layout_marginTop="376px"
+                    android:text="@string/reduce_water_strong_cook_soup"
+                    android:textColor="#0dc8fb"
+                    android:textSize="24px" />
+                <TextView
+                    android:id="@+id/reduceWaterStrongTxtCooking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="419px"
+                    android:layout_marginTop="376px"
+                    android:text="@string/reduce_water_strong_cooking"
+                    android:textColor="#ffc91e"
+                    android:textSize="24px" />
+                <TextView
+                    android:id="@+id/reduceWaterStrongTxtWashFruit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="488px"
+                    android:layout_marginTop="376px"
+                    android:text="@string/reduce_water_strong_wash_fruit"
+                    android:textColor="#60d029"
+                    android:textSize="24px" />
+                <ImageView
+                    android:id="@+id/reduceWaterStrongImgLevWeakNotSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_weak_not_sel" />
+                <ImageView
+                    android:id="@+id/reduceWaterStrongImgLevNormalNotSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="112px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_normal_not_sel" />
+                <ImageView
+                    android:id="@+id/reduceWaterStrongImgLevStrongSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="190px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_strong_sel" />
+            </RelativeLayout>
+
+            <!--weak-->
+            <RelativeLayout
+                android:id="@+id/layoutReduceWaterWeak"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/reduceWaterWeakImgDrink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="394px"
+                    android:layout_marginTop="315px"
+                    android:src="@drawable/w_reduce_water_weak_drink" />
+                <TextView
+                    android:id="@+id/reduceWaterWeakTxtDrink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="371px"
+                    android:layout_marginTop="376px"
+                    android:text="@string/reduce_water_weak_drink"
+                    android:textColor="#0fc8fb"
+                    android:textSize="24px" />
+                <ImageView
+                    android:id="@+id/reduceWaterWeakImgLevWeakSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_weak_sel" />
+                <ImageView
+                    android:id="@+id/reduceWaterWeakImgLevNormalNotSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="112px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_normal_not_sel" />
+                <ImageView
+                    android:id="@+id/reduceWaterWeakImgLevStrongNotSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="190px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_strong_not_sel" />
+            </RelativeLayout>
+
+            <!--normal-->
+            <RelativeLayout
+                android:id="@+id/layoutReduceWaterNormal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/reduceWaterNormalImgDrink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="299px"
+                    android:layout_marginTop="309px"
+                    android:src="@drawable/w_reduce_water_normal_drink" />
+                <ImageView
+                    android:id="@+id/reduceWaterNormalImgWine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="408px"
+                    android:layout_marginTop="308px"
+                    android:src="@drawable/w_reduce_water_normal_wine" />
+                <ImageView
+                    android:id="@+id/reduceWaterNormalImgTea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="495px"
+                    android:layout_marginTop="318px"
+                    android:src="@drawable/w_reduce_water_normal_tea" />
+                <TextView
+                    android:id="@+id/reduceWaterNormalTxtDrink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="278px"
+                    android:layout_marginTop="376px"
+                    android:text="@string/reduce_water_normal_drink"
+                    android:textColor="#0dc8fb"
+                    android:textSize="24px" />
+                <TextView
+                    android:id="@+id/reduceWaterNormalTxtWine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="407px"
+                    android:layout_marginTop="376px"
+                    android:text="@string/reduce_water_normal_wine"
+                    android:textColor="#ef018e"
+                    android:textSize="24px" />
+                <TextView
+                    android:id="@+id/reduceWaterNormalTxtTea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="494px"
+                    android:layout_marginTop="376px"
+                    android:text="@string/reduce_water_normal_tea"
+                    android:textColor="#f16700"
+                    android:textSize="24px" />
+                <ImageView
+                    android:id="@+id/reduceWaterNormalImgLevWeakNotSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="36px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_weak_not_sel" />
+                <ImageView
+                    android:id="@+id/reduceWaterNormalImgLevNormalSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="112px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_normal_sel" />
+                <ImageView
+                    android:id="@+id/reduceWaterNormalImgLevStrongNotSel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="190px"
+                    android:layout_marginTop="422px"
+                    android:src="@drawable/w_reduce_water_lev_strong_not_sel" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!--clean water-->
+        <RelativeLayout
+            android:id="@+id/layoutCleanWater"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/cleanWaterTxtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="104px"
+                android:layout_marginTop="144px"
+                android:text="@string/clean_water_title"
+                android:textColor="#ffffff"
+                android:textSize="30px"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/cleanWaterImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100px"
+                android:layout_marginTop="236px"
+                android:src="@drawable/w_clean_water_main" />
+            <ImageView
+                android:id="@+id/cleanWaterImgMilk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="347px"
+                android:layout_marginTop="306px"
+                android:src="@drawable/w_clean_water_milk" />
+            <ImageView
+                android:id="@+id/cleanWaterImgMedicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="460px"
+                android:layout_marginTop="314px"
+                android:src="@drawable/w_clean_water_medicine" />
+            <TextView
+                android:id="@+id/cleanWaterTxtMilk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="328px"
+                android:layout_marginTop="376px"
+                android:text="@string/clean_water_milk"
+                android:textColor="#000000"
+                android:textSize="24px" />
+            <TextView
+                android:id="@+id/cleanWaterTxtMedicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="456px"
+                android:layout_marginTop="376px"
+                android:text="@string/clean_water_medicine"
+                android:textColor="#0078f0"
+                android:textSize="24px" />
+
+        </RelativeLayout>
+
+        <!--wash water-->
+        <RelativeLayout
+            android:id="@+id/layoutWashWater"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/washWaterTxtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="104px"
+                android:layout_marginTop="144px"
+                android:text="@string/wash_water_title"
+                android:textColor="#ffffff"
+                android:textSize="30px"
+                android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/washWaterImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="98px"
+                android:layout_marginTop="275px"
+                android:src="@drawable/w_wash_water_main" />
+
+            <TextView
+                android:id="@+id/washWaterTxtSecVal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="374px"
+                android:layout_marginTop="332px"
+                android:text="@string/wash_water_sec_val"
+                android:textColor="#0dc8fa"
+                android:textSize="80px" />
+            <TextView
+                android:id="@+id/washWaterTxtSecTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="478px"
+                android:layout_marginTop="371px"
+                android:text="@string/wash_water_sec_title"
+                android:textColor="#0078f0"
+                android:textSize="20px" />
+
+        </RelativeLayout>
+
+        <!--simple water-->
+        <RelativeLayout
+            android:id="@+id/layoutSimpleWater"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/simpleWaterTxtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100px"
+                android:layout_marginTop="144px"
+                android:text="@string/simple_water_title"
+                android:textColor="#ffffff"
+                android:textSize="30px"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/simpleWaterImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="105px"
+                android:layout_marginTop="233px"
+                android:src="@drawable/w_simple_water_main" />
+            <ImageView
+                android:id="@+id/simpleWaterImgDrink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="299px"
+                android:layout_marginTop="308px"
+                android:src="@drawable/w_simple_water_drink" />
+            <ImageView
+                android:id="@+id/simpleWaterImgH2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="398px"
+                android:layout_marginTop="312px"
+                android:src="@drawable/w_simple_water_h2" />
+            <ImageView
+                android:id="@+id/simpleWaterImgSupplyWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="501px"
+                android:layout_marginTop="312px"
+                android:src="@drawable/w_simple_water_supply_water" />
+            <TextView
+                android:id="@+id/simpleWaterTxtDrink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="283px"
+                android:layout_marginTop="376px"
+                android:text="@string/simple_water_drink"
+                android:textColor="#0fc8fc"
+                android:textSize="24px" />
+            <TextView
+                android:id="@+id/simpleWaterTxtH2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="401px"
+                android:layout_marginTop="376px"
+                android:text="@string/simple_water_h2"
+                android:textColor="#000000"
+                android:textSize="24px" />
+            <TextView
+                android:id="@+id/simpleWaterTxtSupplyWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="500px"
+                android:layout_marginTop="376px"
+                android:text="@string/simple_water_supply_water"
+                android:textColor="#0fc8fc"
+                android:textSize="24px" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!--setting Holder-->
+    <RelativeLayout
+        android:id="@+id/layoutSettingHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--setting common-->
+        <RelativeLayout
+            android:id="@+id/layoutSettingCommon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/settingCommonImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="351px"
+                android:layout_marginTop="75px"
+                android:src="@drawable/w_setting_common_main" />
+            <ImageView
+                android:id="@+id/settingCommonImgSplit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="43px"
+                android:layout_marginTop="288px"
+                android:src="@drawable/w_setting_common_split" />
+            <ImageView
+                android:id="@+id/settingCommonImgClickIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="295px"
+                android:layout_marginTop="446px"
+                android:src="@drawable/w_setting_common_click_icon" />
+            <TextView
+                android:id="@+id/settingCommonTxtPress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="326px"
+                android:layout_marginTop="451px"
+                android:text="@string/setting_common_press"
+                android:textColor="#0bc5fb"
+                android:textSize="20px"/>
+            <ImageView
+                android:id="@+id/settingCommonImgFuncWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50px"
+                android:layout_marginTop="171px"
+                android:src="@drawable/w_setting_common_func_water_small" />
+            <ImageView
+                android:id="@+id/settingCommonImgFuncVol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="172px"
+                android:layout_marginTop="171px"
+                android:src="@drawable/w_setting_common_func_vol_small" />
+            <ImageView
+                android:id="@+id/settingCommonImgFuncLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="295px"
+                android:layout_marginTop="171px"
+                android:src="@drawable/w_setting_common_func_light_small" />
+            <ImageView
+                android:id="@+id/settingCommonImgFuncAdvert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="417px"
+                android:layout_marginTop="171px"
+                android:src="@drawable/w_setting_common_func_advert_small" />
+            <ImageView
+                android:id="@+id/settingCommonImgFuncStrong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="541px"
+                android:layout_marginTop="171px"
+                android:src="@drawable/w_setting_common_func_strong_small" />
+            <ImageView
+                android:id="@+id/settingCommonImgFuncReset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="663px"
+                android:layout_marginTop="171px"
+                android:src="@drawable/w_setting_common_func_reset_small" />
+        </RelativeLayout>
+
+        <!--setting 1 water-->
+        <RelativeLayout
+            android:id="@+id/layoutSetting1Water"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/setting1WaterImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="38px"
+                android:layout_marginTop="161px"
+                android:src="@drawable/w_setting_1_water_main" />
+            <ImageView
+                android:id="@+id/setting1WaterImgFuncSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="82px"
+                android:layout_marginTop="270px"
+                android:src="@drawable/w_setting_common_tips_triangle" />
+            <ImageView
+                android:id="@+id/setting1WaterImg10sNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="155px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_1_water_10sec_not_sel" />
+            <ImageView
+                android:id="@+id/setting1WaterImg10sSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="155px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_1_water_10sec_sel" />
+            <ImageView
+                android:id="@+id/setting1WaterImg30sNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="285px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_1_water_30sec_not_sel" />
+            <ImageView
+                android:id="@+id/setting1WaterImg30sSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="285px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_1_water_30sec_sel" />
+            <ImageView
+                android:id="@+id/setting1WaterImg1minNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="414px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_1_water_1min_not_sel" />
+            <ImageView
+                android:id="@+id/setting1WaterImg1minSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="414px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_1_water_1min_sel" />
+            <ImageView
+                android:id="@+id/setting1WaterImg30minNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="544px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_1_water_30min_not_sel" />
+            <ImageView
+                android:id="@+id/setting1WaterImg30minSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="544px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_1_water_30min_sel" />
+        </RelativeLayout>
+
+        <!--setting 2 vol-->
+        <RelativeLayout
+            android:id="@+id/layoutSetting2Vol"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/setting2VolImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="160px"
+                android:layout_marginTop="161px"
+                android:src="@drawable/w_setting_2_vol_main" />
+            <ImageView
+                android:id="@+id/setting2VolImgFuncSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="204px"
+                android:layout_marginTop="270px"
+                android:src="@drawable/w_setting_common_tips_triangle" />
+            <ImageView
+                android:id="@+id/setting2VolMuteImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="162px"
+                android:layout_marginTop="315px"
+                android:src="@drawable/w_setting_2_vol_mute" />
+            <ImageView
+                android:id="@+id/setting2VolMaxImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="610px"
+                android:layout_marginTop="315px"
+                android:src="@drawable/w_setting_2_vol_max" />
+            <TextView
+                android:id="@+id/setting2VolTxtMute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="152px"
+                android:layout_marginTop="351px"
+                android:text="@string/setting_2_vol_mute"
+                android:textColor="#ffffff"
+                android:textSize="20px" />
+            <TextView
+                android:id="@+id/setting2VolTxtMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="610px"
+                android:layout_marginTop="351px"
+                android:text="@string/setting_2_vol_max"
+                android:textColor="#ffffff"
+                android:textSize="20px" />
+            <!--TODO:SeekBar own style-->
+        </RelativeLayout>
+
+        <!--setting 3 light-->
+        <RelativeLayout
+            android:id="@+id/layoutSetting3Light"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/setting3LightImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="283px"
+                android:layout_marginTop="161px"
+                android:src="@drawable/w_setting_3_light_main" />
+            <ImageView
+                android:id="@+id/setting3LightImgFuncSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="327px"
+                android:layout_marginTop="270px"
+                android:src="@drawable/w_setting_common_tips_triangle" />
+            <ImageView
+                android:id="@+id/setting3LightMinImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="155px"
+                android:layout_marginTop="312px"
+                android:src="@drawable/w_setting_3_light_min" />
+            <ImageView
+                android:id="@+id/setting3LightMaxImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="610px"
+                android:layout_marginTop="312px"
+                android:src="@drawable/w_setting_3_light_max" />
+            <TextView
+                android:id="@+id/setting3LightTxtMin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="152px"
+                android:layout_marginTop="351px"
+                android:text="@string/setting_3_light_min"
+                android:textColor="#ffffff"
+                android:textSize="20px" />
+            <TextView
+                android:id="@+id/setting3LightTxtMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="610px"
+                android:layout_marginTop="351px"
+                android:text="@string/setting_3_light_max"
+                android:textColor="#ffffff"
+                android:textSize="20px" />
+            <!--TODO:SeekBar own style-->
+        </RelativeLayout>
+
+        <!--setting 4 adbert-->
+        <RelativeLayout
+            android:id="@+id/layoutSetting4Advert"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/setting4AdvertImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="406px"
+                android:layout_marginTop="161px"
+                android:src="@drawable/w_setting_4_advert_main" />
+            <ImageView
+                android:id="@+id/setting4AdvertImgFuncSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="449px"
+                android:layout_marginTop="270px"
+                android:src="@drawable/w_setting_common_tips_triangle" />
+            <ImageView
+                android:id="@+id/setting4AdvertImgOpenNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="285px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_4_advert_open_not_sel" />
+            <ImageView
+                android:id="@+id/setting4AdvertImgOpenSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="285px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_4_advert_open_sel" />
+            <ImageView
+                android:id="@+id/setting4AdvertImgCloseNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="414px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_4_advert_close_not_sel" />
+            <ImageView
+                android:id="@+id/setting4AdvertImgCloseSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="414px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_4_advert_close_sel" />
+        </RelativeLayout>
+
+        <!--setting 5 strong-->
+        <RelativeLayout
+            android:id="@+id/layoutSetting5Strong"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/setting5StrongImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="528px"
+                android:layout_marginTop="161px"
+                android:src="@drawable/w_setting_5_strong_main" />
+            <ImageView
+                android:id="@+id/setting5StrongImgFuncSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="571px"
+                android:layout_marginTop="270px"
+                android:src="@drawable/w_setting_common_tips_triangle" />
+            <ImageView
+                android:id="@+id/setting5StrongImgWeakNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_5_strong_weak_not_sel" />
+            <ImageView
+                android:id="@+id/setting5StrongImgWeakSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_5_strong_weak_sel" />
+            <ImageView
+                android:id="@+id/setting5StrongImgMidNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_5_strong_mid_not_sel" />
+            <ImageView
+                android:id="@+id/setting5StrongImgMidSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="350px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_5_strong_mid_sel" />
+            <ImageView
+                android:id="@+id/setting5StrongImgStrongNotSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="480px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_5_strong_strong_not_sel" />
+            <ImageView
+                android:id="@+id/setting5StrongImgStrongSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="480px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_5_strong_strong_sel" />
+        </RelativeLayout>
+
+        <!--setting 6 reset-->
+        <RelativeLayout
+            android:id="@+id/layoutSetting6Reset"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/setting6ResetImgMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="650px"
+                android:layout_marginTop="161px"
+                android:src="@drawable/w_setting_6_reset_main" />
+            <ImageView
+                android:id="@+id/setting6ResetImgFuncSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="695px"
+                android:layout_marginTop="270px"
+                android:src="@drawable/w_setting_common_tips_triangle" />
+            <ImageView
+                android:id="@+id/setting6ResetImgLittleSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="138px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_6_reset_sel" />
+            <ImageView
+                android:id="@+id/setting6ResetImgMidSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="312px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_6_reset_sel" />
+            <ImageView
+                android:id="@+id/setting6ResetImgFullSel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="487px"
+                android:layout_marginTop="323px"
+                android:src="@drawable/w_setting_6_reset_sel" />
+            <TextView
+                android:id="@+id/setting6ResetTxtLittleNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="161px"
+                android:layout_marginTop="331px"
+                android:text="@string/setting_6_reset_little_num"
+                android:textColor="#ffffff"
+                android:textSize="23px" />
+            <TextView
+                android:id="@+id/setting6ResetTxtMidNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="333px"
+                android:layout_marginTop="331px"
+                android:text="@string/setting_6_reset_mid_num"
+                android:textColor="#ffffff"
+                android:textSize="23px" />
+            <TextView
+                android:id="@+id/setting6ResetTxtFullNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="510px"
+                android:layout_marginTop="331px"
+                android:text="@string/setting_6_reset_full_num"
+                android:textColor="#ffffff"
+                android:textSize="23px" />
+            <TextView
+                android:id="@+id/setting6ResetTxtLittleContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="539px"
+                android:layout_marginTop="360px"
+                android:layout_alignParentRight="true"
+                android:text="@string/setting_6_reset_little_content"
+                android:textColor="#ffffff"
+                android:textSize="20px" />
+            <TextView
+                android:id="@+id/setting6ResetTxtMidContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="361px"
+                android:layout_marginTop="360px"
+                android:layout_alignParentRight="true"
+                android:text="@string/setting_6_reset_mid_content"
+                android:textColor="#ffffff"
+                android:textSize="20px" />
+            <TextView
+                android:id="@+id/setting6ResetTxtFullContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="186px"
+                android:layout_marginTop="360px"
+                android:layout_alignParentRight="true"
+                android:text="@string/setting_6_reset_full_content"
+                android:textColor="#ffffff"
+                android:textSize="20px" />
+            <ImageView
+                android:id="@+id/setting6ResetImgLittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="175px"
+                android:layout_marginTop="331px"
+                android:src="@drawable/w_setting_6_reset_little" />
+            <ImageView
+                android:id="@+id/setting6ResetImgMid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="352px"
+                android:layout_marginTop="331px"
+                android:src="@drawable/w_setting_6_reset_mid" />
+            <ImageView
+                android:id="@+id/setting6ResetImgFull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="527px"
+                android:layout_marginTop="331px"
+                android:src="@drawable/w_setting_6_reset_full" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>

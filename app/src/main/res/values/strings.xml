@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">FqWater</string>
+	<string name="app_nameVer2">健康坊净水器</string>
+
+	<!--use for water-->
+	<string name="common1_time">2017/04/25  12:13</string>
+	<string name="common2_ph">PH  10.2</string>
+	<string name="common2_water_speed_title">流速</string>
+	<string name="common2_orp">ORP: -000 mV</string>
+	<string name="common2_age">滤芯寿命</string>
+	<string name="common2_water_speed_val">(1.3 L/min)</string>
+	<string name="common3_age1_title">1</string>
+	<string name="common3_age2_title">2</string>
+	<string name="common3_age3_title">3</string>
+	<string name="common3_age1_val">100L</string>
+	<string name="common3_age2_val">2500L</string>
+	<string name="common3_age3_val">5000L</string>
+	<string name="outside_water_title">外用水</string>
+	<string name="outside_water_beauty">美容</string>
+	<string name="outside_water_wash_cup">清洗碗筷</string>
+	<string name="reduce_water_title">还原水</string>
+	<string name="reduce_water_strong_cook_rice">煮饭</string>
+	<string name="reduce_water_strong_cook_soup">煲汤</string>
+	<string name="reduce_water_strong_cooking">烹饪</string>
+	<string name="reduce_water_strong_wash_fruit">清洗蔬果</string>
+	<string name="reduce_water_weak_drink">初始饮用</string>
+	<string name="reduce_water_normal_drink">日常饮用</string>
+	<string name="reduce_water_normal_wine">调酒</string>
+	<string name="reduce_water_normal_tea">泡茶</string>
+	<string name="clean_water_title">净  水</string>
+	<string name="clean_water_milk">冲牛奶</string>
+	<string name="clean_water_medicine">服药</string>
+	<string name="wash_water_title">洗  涤</string>
+	<string name="wash_water_sec_val">58</string>
+	<string name="wash_water_sec_title">秒</string>
+	<string name="simple_water_title">水素水</string>
+	<string name="simple_water_drink">日常饮用</string>
+	<string name="simple_water_h2">氢气</string>
+	<string name="simple_water_supply_water">补水</string>
+	<string name="setting_common_press">请按外用水按键退出</string>
+	<string name="setting_2_vol_mute">静音</string>
+	<string name="setting_2_vol_max">最大</string>
+	<string name="setting_3_light_min">最暗</string>
+	<string name="setting_3_light_max">最亮</string>
+	<string name="setting_6_reset_little_num">1</string>
+	<string name="setting_6_reset_mid_num">2</string>
+	<string name="setting_6_reset_full_num">3</string>
+	<string name="setting_6_reset_little_content">100L</string>
+	<string name="setting_6_reset_mid_content">2500L</string>
+	<string name="setting_6_reset_full_content">5000L</string>
+	<!--use for serial debug-->
+    <string name="about_msg">
+Serial Port API sample v1.1\n
+\n
+This program is the sample application provided with project android-serialport-api.\n
+\n
+More information and bug report on [http://code.google.com/p/android-serialport-api]\n
+\n
+Copyright 2010-2011 Cedric Priscal\n
+\n
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at\n
+\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+\n
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.\n
+	</string>
+<string name="error_configuration">Please configure your serial port first.</string>
+<string name="error_security">You do not have read/write permission to the serial
+		port.</string>
+<string name="error_unknown">The serial port can not be opened for an unknown
+		reason.</string>
+
+</resources>
