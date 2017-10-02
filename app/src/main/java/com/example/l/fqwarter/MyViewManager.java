@@ -1,7 +1,6 @@
 package com.example.l.fqwarter;
 
 import android.content.Context;
-import android.media.Image;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
@@ -15,10 +14,7 @@ import android.widget.TextView;
 import com.example.l.fqwarter.myutils.FullScreenVideoView;
 import com.example.l.fqwarter.myutils.MyAnimationDrawable;
 import com.example.l.fqwarter.protocol.CmdSerialInfo;
-import com.example.l.fqwarter.protocol.FqWaterInfo;
 import com.example.l.fqwarter.protocol.ProtocolDeal;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by L on 2017/8/27.
