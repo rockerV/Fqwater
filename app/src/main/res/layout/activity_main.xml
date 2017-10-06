@@ -18,7 +18,7 @@
 
     <!--background layout-->
     <RelativeLayout
-        android:id="@+id/layoutBackground"
+        android:id="@+id/layoutWorkBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -37,16 +37,21 @@
             android:layout_alignParentLeft="true"
             android:src="@drawable/an00000" />
 
-<!--
+    </RelativeLayout>
+
+
+    <!-- setting background layout-->
+    <RelativeLayout
+        android:id="@+id/layoutSettingBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/common1SettingImgBackground"
+            android:id="@+id/commonSettingImgBackground"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:src="@drawable/w_setting_common_background" />
-
--->
 
     </RelativeLayout>
 
@@ -939,6 +944,13 @@
                 android:layout_marginLeft="610px"
                 android:layout_marginTop="315px"
                 android:src="@drawable/w_setting_2_vol_max" />
+            <SeekBar
+                android:id="@+id/setting2VolSeekbar"
+                android:layout_width="400px"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200px"
+                android:layout_marginTop="315px"
+                style="@style/FqSeekBarStyle"/>
             <TextView
                 android:id="@+id/setting2VolTxtMute"
                 android:layout_width="wrap_content"
@@ -993,6 +1005,13 @@
                 android:layout_marginLeft="610px"
                 android:layout_marginTop="312px"
                 android:src="@drawable/w_setting_3_light_max" />
+            <SeekBar
+                android:id="@+id/setting3LightSeekbar"
+                android:layout_width="400px"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200px"
+                android:layout_marginTop="315px"
+                style="@style/FqSeekBarStyle"/>
             <TextView
                 android:id="@+id/setting3LightTxtMin"
                 android:layout_width="wrap_content"

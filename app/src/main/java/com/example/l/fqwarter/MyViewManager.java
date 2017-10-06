@@ -1,14 +1,25 @@
 package com.example.l.fqwarter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.l.fqwarter.myutils.FullScreenVideoView;
@@ -16,13 +27,23 @@ import com.example.l.fqwarter.myutils.MyAnimationDrawable;
 import com.example.l.fqwarter.protocol.CmdSerialInfo;
 import com.example.l.fqwarter.protocol.ProtocolDeal;
 
+import java.util.Calendar;
+
 /**
  * Created by L on 2017/8/27.
  */
 
 public class MyViewManager {
+    private final static String TAG = "MainActivity";
+
+    private static final int MSG_VIEW_MGR_UPDATA_TIME = 1;
+
+    private static final int BACKGROUND_WORK = 1;
+    private static final int BACKGROUND_SETTING = 0;
+
     View mView;
     Context mContext;
+    Activity mActivity;
 
     int mPicNum;
     FqWaterInfo mFqWaterInfo;
@@ -30,13 +51,24 @@ public class MyViewManager {
     private FullScreenVideoView mVideoView;
     private Uri mUri;
 
-    TextView mTvTst;
+    //rotation img water
+    private Animation mAni;
+
+    private TextView mTvTst;
+
+    //handler for updata time
+    ViewMgrHandler mViewMgrHandler;
+
+    //vol info
+    AudioManager mAudioManager;
+    int mMaxVol;
 
 //    <!--background layout-->
-    RelativeLayout mRlBackground;
+    RelativeLayout mRlWorkBackground;
     ImageView mCommon1BlueBackground;
     ImageView mCommon1WarterAni;
-    ImageView mCommon1SettingBackground;
+    RelativeLayout mRlSettingBackground;
+    ImageView mCommonSettingBackground;
 
 //    <!--All common use(work and setting) layout=============-->
     RelativeLayout mRlCommonAll;
@@ -178,6 +210,7 @@ public class MyViewManager {
     ImageView msetting2VolImgFuncSel;
     ImageView msetting2VolMuteImg;
     ImageView msetting2VolMaxImg;
+    SeekBar msetting2VolSeekbar;
     TextView msetting2VolTxtMute;
     TextView msetting2VolTxtMax;
 
@@ -187,6 +220,7 @@ public class MyViewManager {
     ImageView msetting3LightImgFuncSel;
     ImageView msetting3LightMinImg;
     ImageView msetting3LightMaxImg;
+    SeekBar msetting3LightSeekbar;
     TextView msetting3LightTxtMin;
     TextView msetting3LightTxtMax;
 
@@ -227,10 +261,11 @@ public class MyViewManager {
     ImageView msetting6ResetImgMid;
     ImageView msetting6ResetImgFull;
 
-    public MyViewManager(View view, Context context)
+    public MyViewManager(View view, Context context, Activity activity)
     {
         mView = view;
         mContext = context;
+        mActivity = activity;
 
         mFqWaterInfo = new FqWaterInfo(context);
 
@@ -238,10 +273,9 @@ public class MyViewManager {
 
 
         //    <!--background layout-->
-        mRlBackground = (RelativeLayout) view.findViewById(R.id.layoutBackground);
+        mRlWorkBackground = (RelativeLayout) view.findViewById(R.id.layoutWorkBackground);
         mCommon1BlueBackground = (ImageView) view.findViewById(R.id.common1ImgBlueBackground);
         mCommon1WarterAni = (ImageView) view.findViewById(R.id.common1ImgWaterAnim);
-//        mCommon1SettingBackground = (ImageView) view.findViewById(R.id.common1SettingImgBackground);
         MyAnimationDrawable.animateRawManuallyFromXML(R.drawable.circle_back, mCommon1WarterAni, new Runnable() {
             @Override
             public void run() {
@@ -258,6 +292,9 @@ public class MyViewManager {
             }
         });
 
+        //setting background
+        mRlSettingBackground = (RelativeLayout) view.findViewById(R.id.layoutSettingBackground);
+        mCommonSettingBackground = (ImageView) view.findViewById(R.id.commonSettingImgBackground);
 
 
 //    <!--All common use(work and setting) layout=============-->
@@ -401,6 +438,7 @@ public class MyViewManager {
         msetting2VolImgFuncSel = (ImageView) view.findViewById(R.id.setting2VolImgFuncSel);
         msetting2VolMuteImg = (ImageView) view.findViewById(R.id.setting2VolMuteImg);
         msetting2VolMaxImg = (ImageView) view.findViewById(R.id.setting2VolMaxImg);
+        msetting2VolSeekbar = (SeekBar) view.findViewById(R.id.setting2VolSeekbar);
         msetting2VolTxtMute = (TextView) view.findViewById(R.id.setting2VolTxtMute);
         msetting2VolTxtMax = (TextView) view.findViewById(R.id.setting2VolTxtMax);
 
@@ -410,6 +448,7 @@ public class MyViewManager {
         msetting3LightImgFuncSel = (ImageView) view.findViewById(R.id.setting3LightImgFuncSel);
         msetting3LightMinImg = (ImageView) view.findViewById(R.id.setting3LightMinImg);
         msetting3LightMaxImg = (ImageView) view.findViewById(R.id.setting3LightMaxImg);
+        msetting3LightSeekbar = (SeekBar) view.findViewById(R.id.setting3LightSeekbar);
         msetting3LightTxtMin = (TextView) view.findViewById(R.id.setting3LightTxtMin);
         msetting3LightTxtMax = (TextView) view.findViewById(R.id.setting3LightTxtMax);
 
@@ -452,10 +491,54 @@ public class MyViewManager {
 
         mVideoView = (FullScreenVideoView) mView.findViewById(R.id.videoView);
 
-        mPicNum = ProtocolDeal.CHANGE_PIC_DATA2_1_SIMPLE_WATER;
+        //rotation animation 水动画旋转圈
+        mAni = AnimationUtils.loadAnimation(mContext, R.anim.rotate);
+        LinearInterpolator lir = new LinearInterpolator();
+        mAni.setInterpolator(lir);
+        mcommon1ImgWaterRoll.setAnimation(mAni);
+
+        //update real time  更新时间
+        mViewMgrHandler = new ViewMgrHandler(Looper.myLooper());
+        ViewMgrSendMsg(MSG_VIEW_MGR_UPDATA_TIME, 1000);
+
+        mPicNum = ProtocolDeal.CHANGE_PIC_DATA2_13_SETTING3_LIGHT;//ProtocolDeal.CHANGE_PIC_DATA2_1_SIMPLE_WATER;
         InitView();
 
     }
+
+    private class ViewMgrHandler extends Handler{
+        public ViewMgrHandler(Looper looper){
+            super(looper);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what){
+                case MSG_VIEW_MGR_UPDATA_TIME:
+                    Log.d(TAG, "handleMessage -----  MSG_VIEW_MGR_UPDATA_TIME");
+                    Calendar calendar = Calendar.getInstance();
+                    mcommon1TxtTime.setText(calendar.get(Calendar.YEAR) + "/" + String.format("%02d", calendar.get(Calendar.MONTH)) +
+                            "/" + calendar.get(Calendar.DATE) + "  " + String.format("%02d", calendar.get(Calendar.HOUR_OF_DAY)) +
+                            ":" + String.format("%02d", calendar.get(Calendar.MINUTE)));
+                    ViewMgrSendMsg(MSG_VIEW_MGR_UPDATA_TIME, 1000);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    private void ViewMgrSendMsg(int msgWhat, int msgDelay){
+        Message msg = mViewMgrHandler.obtainMessage();
+        msg.what = msgWhat;
+        if (msgDelay == 0){
+            mViewMgrHandler.sendMessage(msg);
+        }else{
+            mViewMgrHandler.sendMessageDelayed(msg, msgDelay);
+        }
+    }
+
 
     public void InitView() {
 
@@ -480,7 +563,8 @@ public class MyViewManager {
 
     public void HideWorkSettingView() {
 
-        mRlBackground.setVisibility(View.INVISIBLE);
+        mRlWorkBackground.setVisibility(View.INVISIBLE);
+        mRlSettingBackground.setVisibility(View.INVISIBLE);
         mRlCommonAll.setVisibility(View.INVISIBLE);
         mRlWorkHolder.setVisibility(View.INVISIBLE);
         mRlOutsideWater.setVisibility(View.INVISIBLE);
@@ -491,11 +575,30 @@ public class MyViewManager {
         mRlSettingHolder.setVisibility(View.INVISIBLE);
     }
 
-    public void BackgroundShow(){
-        mRlBackground.setVisibility(View.VISIBLE);
+
+    private void workOrSettingBgShow(int val){
+        if(val == BACKGROUND_SETTING){
+            //show setting backgruond
+            mRlWorkBackground.setVisibility(View.INVISIBLE);
+            mRlSettingBackground.setVisibility(View.VISIBLE);
+        }else if(val == BACKGROUND_WORK){
+            //show work backgruond
+            mRlWorkBackground.setVisibility(View.VISIBLE);
+            mRlSettingBackground.setVisibility(View.INVISIBLE);
+        }
     }
-    public void BackgroundHide(){
-        mRlBackground.setVisibility(View.INVISIBLE);
+
+    public void workBackgroundShow(){
+        mRlWorkBackground.setVisibility(View.VISIBLE);
+    }
+    public void workBackgroundHide(){
+        mRlWorkBackground.setVisibility(View.INVISIBLE);
+    }
+    public void settingBackgroundShow(){
+        mRlSettingBackground.setVisibility(View.VISIBLE);
+    }
+    public void settingBackgroundHide(){
+        mRlSettingBackground.setVisibility(View.INVISIBLE);
     }
     public void CommonShow(){
         mRlCommonAll.setVisibility(View.VISIBLE);
@@ -611,7 +714,7 @@ public class MyViewManager {
     public void ChangePic(int picNum){
         switch (picNum){
             case ProtocolDeal.CHANGE_PIC_DATA2_1_SIMPLE_WATER:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterShow();
@@ -622,7 +725,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_2_CLEAN_WATER:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterHide();
@@ -633,7 +736,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_3_OUTSIDE_WATER:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterHide();
@@ -644,7 +747,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_4_REDUCE_WATER_WEAK:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterHide();
@@ -658,7 +761,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_5_REDUCE_WATER_NORMAL:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterHide();
@@ -672,7 +775,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_6_REDUCE_WATER_STRONG:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterHide();
@@ -686,7 +789,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_7_SETTING1_WATER:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_SETTING);
                 CommonShow();
                 WorkHide();
                 SettingShow();
@@ -698,7 +801,7 @@ public class MyViewManager {
                 Setting6ResetHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_8_SETTING2_VOL:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_SETTING);
                 CommonShow();
                 WorkHide();
                 SettingShow();
@@ -710,7 +813,7 @@ public class MyViewManager {
                 Setting6ResetHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_9_WASH_WATER1:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterHide();
@@ -721,7 +824,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_10_WASH_WATER2:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterHide();
@@ -732,7 +835,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_11_SETTING6_RESET:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_SETTING);
                 CommonShow();
                 WorkHide();
                 SettingShow();
@@ -744,7 +847,7 @@ public class MyViewManager {
                 Setting6ResetShow();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_12_SETTING5_STRONG:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_SETTING);
                 CommonShow();
                 WorkHide();
                 SettingShow();
@@ -756,7 +859,7 @@ public class MyViewManager {
                 Setting6ResetHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_13_SETTING3_LIGHT:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_SETTING);
                 CommonShow();
                 WorkHide();
                 SettingShow();
@@ -768,7 +871,7 @@ public class MyViewManager {
                 Setting6ResetHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_14_WASH_WATER3:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_WORK);
                 CommonShow();
                 WorkShow();
                 WorkSimpleWaterHide();
@@ -779,7 +882,7 @@ public class MyViewManager {
                 SettingHide();
                 break;
             case ProtocolDeal.CHANGE_PIC_DATA2_15_SETTING4_ADVERT:
-                BackgroundShow();
+                workOrSettingBgShow(BACKGROUND_SETTING);
                 CommonShow();
                 WorkHide();
                 SettingShow();
@@ -789,6 +892,23 @@ public class MyViewManager {
                 Setting4AdvertShow();
                 Setting5StrongHide();
                 Setting6ResetHide();
+                break;
+        }
+    }
+
+    private void SettingProc(CmdSerialInfo cmdSerialInfo){
+        switch (cmdSerialInfo.getData1()){
+            case ProtocolDeal.CHANGE_SETTING_DATA1_WATER:
+                break;
+            case ProtocolDeal.CHANGE_SETTING_DATA1_VOL:
+                break;
+            case ProtocolDeal.CHANGE_SETTING_DATA1_LIGHT:
+                setWindowBrightness(cmdSerialInfo.getData2());
+
+                break;
+            case ProtocolDeal.CHANGE_SETTING_DATA1_STRONG:
+                break;
+            case ProtocolDeal.CHANGE_SETTING_DATA1_RESET:
                 break;
         }
     }
@@ -842,7 +962,7 @@ public class MyViewManager {
                 data2 = cmdSerialInfo.getData2();
                 mFqWaterInfo.setVal_flow_data1(data1);//write settings
                 mFqWaterInfo.setVal_flow_data1(data2);//write settings
-
+                mcommon2TxtWaterSpeedVal.setText(data1 + "." + data2 + " L/min");
                 break;
             case ProtocolDeal.CHANGE_FILTER1_HEAD:
                 data1 = cmdSerialInfo.getData1();
@@ -870,14 +990,14 @@ public class MyViewManager {
                 data2 = cmdSerialInfo.getData2();
                 mFqWaterInfo.setVal_ph_data1(data1);//write settings
                 mFqWaterInfo.setVal_ph_data2(data2);//write settings
-
+                mcommon2TxtPH.setText("PH  " + data1 + "." + data2);
                 break;
             case ProtocolDeal.CHANGE_ORP_HEAD:
                 data1 = cmdSerialInfo.getData1();
                 data2 = cmdSerialInfo.getData2();
                 mFqWaterInfo.setVal_orp_data1(data1);//write settings
                 mFqWaterInfo.setVal_orp_data2(data2);//write settings
-
+                mcommon2TxtORP.setText("ORP: " + data1 + data2 + " mV");
                 break;
             case ProtocolDeal.CHANGE_PLAYER_HEAD:
                 PlayVideo(cmdSerialInfo);
@@ -890,6 +1010,23 @@ public class MyViewManager {
                 break;
 
         }
+    }
+
+    //hardware deal
+    private void setWindowBrightness(int brightnessLev) {
+        Window window = mActivity.getWindow();
+        WindowManager.LayoutParams lp = window.getAttributes();
+        lp.screenBrightness = brightnessLev / ProtocolDeal.CHANGE_SETTING_LIGHT_DATA2_MAX_5;
+        window.setAttributes(lp);
+    }
+
+    private void VolInfoInit(){
+        mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+        mMaxVol = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+    }
+
+    private void SetVol(int volLev){
+        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, ((mMaxVol-1) * volLev)/(ProtocolDeal.CHANGE_SETTING_VOL_DATA2_MAX_8-1), 0);
     }
 
 }

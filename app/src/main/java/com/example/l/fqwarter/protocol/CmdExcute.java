@@ -50,7 +50,7 @@ public class CmdExcute {
 
         mContext = context;
         mMainAtyLayout = (FrameLayout) LayoutInflater.from(mContext).inflate(R.layout.activity_main,null);
-        mLayoutBackground = (RelativeLayout) mMainAtyLayout.findViewById(R.id.layoutBackground);
+        mLayoutBackground = (RelativeLayout) mMainAtyLayout.findViewById(R.id.layoutWorkBackground);
         mCommon1ImgBlueBackground = (ImageView) mMainAtyLayout.findViewById(R.id.common1ImgBlueBackground);
         mCommon1TxtTime = (TextView) mMainAtyLayout.findViewById(R.id.common1TxtTime);
 

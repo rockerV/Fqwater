@@ -78,10 +78,23 @@ public class ProtocolDeal {
     public final static int CHANGE_SETTING_DATA1_LIGHT = 3;
     public final static int CHANGE_SETTING_DATA1_STRONG = 4;
     public final static int CHANGE_SETTING_DATA1_RESET = 5;
-
-
-
-
+    //WATER SETTING
+    public final static int CHANGE_SETTING_WATER_DATA2_1_10S = 1;
+    public final static int CHANGE_SETTING_WATER_DATA2_2_30S = 2;
+    public final static int CHANGE_SETTING_WATER_DATA2_2_1MIN = 3;
+    public final static int CHANGE_SETTING_WATER_DATA2_2_30MIN = 4;
+    //VOL SETTING
+    public final static int CHANGE_SETTING_VOL_DATA2_MIN_1 = 1;
+    public final static int CHANGE_SETTING_VOL_DATA2_MAX_8 = 8;
+    //LIGHT SETTING
+    public final static int CHANGE_SETTING_LIGHT_DATA2_MIN_1 = 1;
+    public final static int CHANGE_SETTING_LIGHT_DATA2_MAX_5 = 5;
+    //STRONG SETTING
+    public final static int CHANGE_SETTING_STRONG_DATA2_MIN_1 = 1;
+    public final static int CHANGE_SETTING_STRONG_DATA2_MAX_3 = 3;
+    //RESET SETTING
+    public final static int CHANGE_SETTING_RESET_DATA2_MIN_1 = 1;
+    public final static int CHANGE_SETTING_RESET_DATA2_MAX_3 = 3;
 
     //host-if data
     public final static String CMD_SERIAL_INFO_KEY = "com.example.l.fqwarter.protocol.CMD_SERIAL_INFO_KEY";

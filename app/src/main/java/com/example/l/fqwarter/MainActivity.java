@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         mLayout = findViewById(R.id.mainAtyLayout);
         mLayout.setBackground(getResources().getDrawable(R.drawable.bluepic));
 
-        mMyViewManager = new MyViewManager(mLayout, this);
+        //new view deal proc class
+        mMyViewManager = new MyViewManager(mLayout, this, this);
 
 
         mTvtst = (TextView) findViewById(R.id.common1TxtTime);
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 //    TextView tv = (TextView) findViewById(R.id.sample_text);
 //    tv.setText(stringFromJNI());
 
+        //TODO: for debug, mask this code when emulator
     //start and bind service
         Intent serialSvIntent = new Intent();
         serialSvIntent.setAction("com.example.l.fqwarter.serialport.SerialPortService");
