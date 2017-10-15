@@ -1007,10 +1007,16 @@
                 android:src="@drawable/w_setting_3_light_max" />
             <SeekBar
                 android:id="@+id/setting3LightSeekbar"
-                android:layout_width="400px"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="200px"
                 android:layout_marginTop="315px"
+                android:progress="20"
+                android:max="100"
+                android:minHeight="10px"
+                android:maxHeight="10px"
+                android:minWidth="400px"
+                android:maxWidth="400px"
                 style="@style/FqSeekBarStyle"/>
             <TextView
                 android:id="@+id/setting3LightTxtMin"

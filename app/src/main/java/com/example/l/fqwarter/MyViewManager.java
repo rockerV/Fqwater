@@ -1003,7 +1003,7 @@ public class MyViewManager {
                 PlayVideo(cmdSerialInfo);
                 break;
             case ProtocolDeal.CHANGE_SETTING_HEAD:
-
+                SettingProc(cmdSerialInfo);
                 break;
             default:
 
